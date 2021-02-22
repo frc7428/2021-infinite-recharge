@@ -14,7 +14,10 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.POVButton;
 import frc.robot.commands.colorWheel.ColorWheelCommand;
 import frc.robot.commands.conveyer.ConveyerCommand;
+import frc.robot.commands.drive.AutoDriveCommand;
+import frc.robot.commands.drive.AutoDriveWithWaitCommand;
 import frc.robot.commands.drive.DriveCommand;
+import frc.robot.commands.drive.POVDriveCommand;
 import frc.robot.commands.intake.IntakeCommand;
 import frc.robot.commands.shooter.ShooterCommand;
 import frc.robot.commands.shooter.ShooterHoodAngleCommand;
@@ -56,7 +59,7 @@ public class RobotContainer {
    * passing it to a {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-    JoystickButton intakeButton = new JoystickButton(driveController, Constants.DRIVE_JOYSTICK_BUTTON.INTAKE_BUTTON);
+    JoystickButton intakeButton = new JoystickButton(driveJoystick, Constants.DRIVE_JOYSTICK_BUTTON.INTAKE_BUTTON);
     intakeButton.whileHeld(new IntakeCommand(intakeSubsystem, true, true));
     intakeButton.whenReleased(new IntakeCommand(intakeSubsystem, false, true));
     
@@ -84,14 +87,22 @@ public class RobotContainer {
     colorWheelButton.whileHeld(new ColorWheelCommand(colorWheelSubsystem, true));
     colorWheelButton.whenReleased(new ColorWheelCommand(colorWheelSubsystem, false));
     
-    POVButton shooterHighAngleButton = new POVButton(driveController, Constants.XBOX_POV_BUTTONS.SHOOTER_ANGLE_HIGH);
-    shooterHighAngleButton.whenPressed(new ShooterHoodAngleCommand(shooterSubsystem, Constants.SHOOTER_ANGLES.HIGH));
+    POVButton driveForwardButton = new POVButton(driveController, Constants.XBOX_POV_BUTTONS.DRIVE_FORWARD);
+    driveForwardButton.whileHeld(new POVDriveCommand(driveSubsystem, 1, 0));
+    driveForwardButton.whenReleased(new POVDriveCommand(driveSubsystem, 0, 0));
 
-    POVButton shooterMidAngleButton = new POVButton(driveController, Constants.XBOX_POV_BUTTONS.SHOOTER_ANGLE_MID);
-    shooterMidAngleButton.whenPressed(new ShooterHoodAngleCommand(shooterSubsystem, Constants.SHOOTER_ANGLES.MID));
+    POVButton driveRightButton = new POVButton(driveController, Constants.XBOX_POV_BUTTONS.DRIVE_RIGHT);
+    driveRightButton.whileHeld(new POVDriveCommand(driveSubsystem, 0, 1));
+    driveRightButton.whenReleased(new POVDriveCommand(driveSubsystem, 0, 0));
 
-    POVButton shooterLowAngleButton = new POVButton(driveController, Constants.XBOX_POV_BUTTONS.SHOOTER_ANGLE_LOW);
-    shooterLowAngleButton.whenPressed(new ShooterHoodAngleCommand(shooterSubsystem, Constants.SHOOTER_ANGLES.LOW));
+    POVButton driveBackwardButton = new POVButton(driveController, Constants.XBOX_POV_BUTTONS.DRIVE_BACKWARD);
+    driveBackwardButton.whileHeld(new POVDriveCommand(driveSubsystem, -1, 0));
+    driveBackwardButton.whenReleased(new POVDriveCommand(driveSubsystem, 0, 0));
+
+    POVButton driveLeftButton = new POVButton(driveController, Constants.XBOX_POV_BUTTONS.DRIVE_LEFT);
+    driveLeftButton.whileHeld(new POVDriveCommand(driveSubsystem, 0, -1));
+    driveLeftButton.whenReleased(new POVDriveCommand(driveSubsystem, 0, 0));
+
 
   }
   
@@ -101,8 +112,30 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand() {
+
+    
+    //Test
+    return new AutoDriveWithWaitCommand(driveSubsystem, 0.75, 0, 0, 0.75);
+     
+
+   /** Galatic Search Path B(Blue) - Rough Draft
+     return new AutoDriveCommand(driveSubsystem, 0.75, 0.75, 0)
+     .andThen(new WaitCommand(10))
+     .andThen(new AutoDriveCommand(driveSusbsytem, 1, 0, 0))
+     .andThen(new WaitCommand(3))
+     .andThen(new AutoDriveCommand(driveSubsystem, 0.75, -0.75, 0))
+     .andThen(new WaitCOmmand(5))
+     .andThen(new AutoDriveCommand(driveSusbsytem, 0.5, 0, 0))
+     .andThen(new WaitCommand(1))
+     .andThen(new AutoDriveCommand(driveSubsystem, 0.75, 0.75, 0))
+     .andThen(new WaitCommand(5))
+     .andThen(new AutoDriveCommand(driveSubsystem, 0.5, 0, 0))
+     .andThen(new WaitCommand(1))
+     .andThen(new AutoDriveCommand(driveSubsystem, 0.75, -0.75, 0))
+     .andThen(new WaitCommand(3)
+    
     // An ExampleCommand will run in autonomous
-    return null;
+    
 
 
     /** Slalom Path - Rough Draft
@@ -205,35 +238,35 @@ public class RobotContainer {
      * .andThen(new WaitCommand(10))
     */
 
-    /** Bounce Path - Rough Draft
-     * return new AutoDriveCommand(driveSubsystem, 0.75, 0, -0.75)
-     * .andThen(new WaitCommand(3))
-     * .andThen(new AutoDriveCommand(driveSubsystem, 0.75, 0, 0))
-     * .andThen(new WaitCommand(2))
-     * .andThen(new AutoDriveCommand(driveSubsystem, 0.25, 0, 1))
-     * .andThen(new WaitCommand(2))
-     * .andThen(new AutoDriveCommand(driveSubsystem, 0.75, -0.25, 0))
-     * .andThen(new WaitCommand(3))
-     * .andThen(new AutoDriveCommand(driveSubsystem, 0.75, 0, 0))
-     * .andThen(new WaitCommand(4))
-     * .andThen(new AutoDriveCommand(driveSubsystem, 0.75, 0, -0.5))
-     * .andThen(new WaitCommand(5))
-     * .andThen(new AutoDriveCommand(driveSubsystem, 1, 0, 0))
-     * .andThen(new WaitCommand(10))
-     * .andThen(new AutoDriveCommand(driveSubsystem, 0.25, 0, 1))
-     * .andThen(new WaitCommand(2))
-     * .andThen(new AutoDriveCommand(driveSubsystem, 1, 0, 0))
-     * .andThen(new WaitCommand(6))
-     * .andThen(new AutoDriveCommand(driveSubsystem, 0.75, 0.75, 0.25,))
-     * .andThen(new WaitCommand(5))
-     * .andThen(new AutoDriveCommand(driveSubsystem, 0.75, 0.25, 0))
-     * .andThen(new WaitCommand(1))
-     * .andThen(new AutoDriveCommand(driveSubsystem, 1, 0, 0))
-     * .andThen(new WaitCommand(2))
-     * .andThen(new AutoDriveCommand(driveSubsystem, 0.25, 0, 1))
-     * .andThen(new WaitCommand(2))
-     * .andThen(new AutoDriveCommand(driveSubsystem, 0.75, 0, 0.5))
-     * .andThen(new WaitCommand(3))
+    /**   Bounce Path - Rough Draft
+      return new AutoDriveCommand(driveSubsystem, 0.75, 0, -0.75)
+      .andThen(new WaitCommand(3))
+      .andThen(new AutoDriveCommand(driveSubsystem, 0.75, 0, 0))
+      .andThen(new WaitCommand(2))
+      .andThen(new AutoDriveCommand(driveSubsystem, 0.25, 0, 1))
+      .andThen(new WaitCommand(2))
+      .andThen(new AutoDriveCommand(driveSubsystem, 0.75, -0.25, 0))
+      .andThen(new WaitCommand(3))
+      .andThen(new AutoDriveCommand(driveSubsystem, 0.75, 0, 0))
+      .andThen(new WaitCommand(4))
+      .andThen(new AutoDriveCommand(driveSubsystem, 0.75, 0, -0.5))
+      .andThen(new WaitCommand(5))
+      .andThen(new AutoDriveCommand(driveSubsystem, 1, 0, 0))
+      .andThen(new WaitCommand(10))
+      .andThen(new AutoDriveCommand(driveSubsystem, 0.25, 0, 1))
+      .andThen(new WaitCommand(2))
+      .andThen(new AutoDriveCommand(driveSubsystem, 1, 0, 0))
+      .andThen(new WaitCommand(6))
+      .andThen(new AutoDriveCommand(driveSubsystem, 0.75, 0.75, 0.25,))
+      .andThen(new WaitCommand(5))
+      .andThen(new AutoDriveCommand(driveSubsystem, 0.75, 0.25, 0))
+      .andThen(new WaitCommand(1))
+      .andThen(new AutoDriveCommand(driveSubsystem, 1, 0, 0))
+      .andThen(new WaitCommand(2))
+      .andThen(new AutoDriveCommand(driveSubsystem, 0.25, 0, 1))
+      .andThen(new WaitCommand(2))
+      .andThen(new AutoDriveCommand(driveSubsystem, 0.75, 0, 0.5))
+      .andThen(new WaitCommand(3))
     */
     
 

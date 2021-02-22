@@ -29,7 +29,7 @@ public final class Constants {
     }
 
     public static final class PWM {
-        public static final int SHOOTER_HOOD_SERVO = 1;
+        public static final int SHOOTER_HOOD_SERVO = 0;
     }
     
     public static final class VICTOR_SPX_CAN {
@@ -42,7 +42,7 @@ public final class Constants {
  
     public static final class DRIVE_JOYSTICK_BUTTON {
         public static final int INVERSED_INTAKE_BUTTON = 2;
-        public static final int INTAKE_BUTTON = XboxController.Button.kX.value;
+        public static final int INTAKE_BUTTON = 1;
     }
 
     public static final class COMPUTER_USB_PORTS {
@@ -51,22 +51,26 @@ public final class Constants {
     }
     
     public static final class MECHANISM_XBOX_BUTTONS {
-        public static final int SHOOTER_BUTTON = XboxController.Button.kY.value;;
+        public static final int SHOOTER_BUTTON = XboxController.Button.kX.value;
         public static final int INVERSED_SHOOTER_BUTTON = XboxController.Button.kStart.value;
         public static final int CONVEYER_BUTTON = XboxController.Button.kA.value; 
-        public static final int INVERSED_CONVEYER_BUTTON = XboxController.Button.kBack.value;
+        public static final int INVERSED_CONVEYER_BUTTON = XboxController.Button.kY.value;
     }
 
     public static final class XBOX_POV_BUTTONS {
-        public static final int SHOOTER_ANGLE_HIGH = 0;
-        public static final int SHOOTER_ANGLE_MID = 90;
-        public static final int SHOOTER_ANGLE_LOW = 180;
+        // public static final int SHOOTER_ANGLE_HIGH = 0;
+        // public static final int SHOOTER_ANGLE_MID = 90;
+        // public static final int SHOOTER_ANGLE_LOW = 180;
+        public static final int DRIVE_FORWARD = 0;
+        public static final int DRIVE_RIGHT = 90;
+        public static final int DRIVE_BACKWARD = 180;
+        public static final int DRIVE_LEFT = 270;
     }
 
     public static final class SHOOTER_ANGLES {
-        public static final double HIGH = 0;
-        public static final double MID = 0;
-        public static final double LOW = 0;
+        public static final double HIGH = 90;
+        public static final double MID = 45;
+        public static final double LOW = 120;
     }
     // Angles only work for 0-170
     

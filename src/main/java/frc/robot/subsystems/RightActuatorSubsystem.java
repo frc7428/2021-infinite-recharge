@@ -15,6 +15,9 @@ public class RightActuatorSubsystem extends SubsystemBase {
   private final WPI_VictorSPX rightActuator = new WPI_VictorSPX(Constants.RIGHT_ACTUATOR_CAN_ID);
   /**
    * Creates a new ActuatorsSubsystem.
+   
+   
+   
    */
   public RightActuatorSubsystem() {
   }

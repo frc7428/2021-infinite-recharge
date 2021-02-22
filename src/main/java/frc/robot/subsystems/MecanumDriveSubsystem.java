@@ -31,9 +31,12 @@ public class MecanumDriveSubsystem extends SubsystemBase {
   }
 
   public void drive(double forward, double right, double clockwise) {
-    double scaledRight = Math.pow(right, 3);
-    double scaledForward = Math.pow(forward, 3);
-    double scaledClockwise = 0.5 * clockwise;
+    double forwardScale = SmartDashboard.getNumber("Forward Reduce", 0.75);
+    double rightScale = SmartDashboard.getNumber("Right Reduce", 0.75);
+    double rotateScale = SmartDashboard.getNumber("Rotate Reduce", 0.5);
+    double scaledRight = rightScale*Math.pow(right, 3);
+    double scaledForward = forwardScale*Math.pow(forward, 3);
+    double scaledClockwise = rotateScale * clockwise;
 
     drive.driveCartesian(scaledRight, scaledForward, scaledClockwise);
 
