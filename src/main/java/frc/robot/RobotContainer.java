@@ -18,6 +18,10 @@ import frc.robot.commands.drive.AutoDriveCommand;
 import frc.robot.commands.drive.AutoDriveWithWaitCommand;
 import frc.robot.commands.drive.DriveCommand;
 import frc.robot.commands.drive.POVDriveCommand;
+import frc.robot.commands.drive.PathABlue;
+import frc.robot.commands.drive.PathARed;
+import frc.robot.commands.drive.PathBBlue;
+import frc.robot.commands.drive.SlalomPath;
 import frc.robot.commands.intake.IntakeCommand;
 import frc.robot.commands.shooter.ShooterCommand;
 import frc.robot.commands.shooter.ShooterHoodAngleCommand;
@@ -67,7 +71,7 @@ public class RobotContainer {
     inversedIntakeButton.whileHeld(new IntakeCommand(intakeSubsystem, true, false));
     inversedIntakeButton.whenReleased(new IntakeCommand(intakeSubsystem, false, false));
 
-    JoystickButton conveyerButton = new JoystickButton(driveController, Constants.MECHANISM_XBOX_BUTTONS.CONVEYER_BUTTON);
+    JoystickButton conveyerButton = new JoystickButton(driveJoystick, Constants.MECHANISM_XBOX_BUTTONS.CONVEYER_BUTTON);
     conveyerButton.whileHeld(new ConveyerCommand(conveyerSubsystem, true, true));
     conveyerButton.whenReleased(new ConveyerCommand(conveyerSubsystem, false, true));
 
@@ -75,7 +79,7 @@ public class RobotContainer {
     inversedConveyerButton.whileHeld(new ConveyerCommand(conveyerSubsystem, true, false));
     inversedConveyerButton.whenReleased(new ConveyerCommand(conveyerSubsystem, false, false));
 
-    JoystickButton shooterButton = new JoystickButton(driveController, Constants.MECHANISM_XBOX_BUTTONS.SHOOTER_BUTTON);
+    JoystickButton shooterButton = new JoystickButton(driveJoystick, Constants.MECHANISM_XBOX_BUTTONS.SHOOTER_BUTTON);
     shooterButton.whileHeld(new ShooterCommand(shooterSubsystem, true, true));
     shooterButton.whenReleased(new ShooterCommand(shooterSubsystem, false, true));
 
@@ -115,7 +119,7 @@ public class RobotContainer {
 
     
     //Test
-    return new AutoDriveWithWaitCommand(driveSubsystem, 0.75, 0, 0, 0.75);
+    return new PathABlue(driveSubsystem, conveyerSubsystem);
      
 
    /** Galatic Search Path B(Blue) - Rough Draft

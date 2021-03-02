@@ -51,9 +51,9 @@ public final class Constants {
     }
     
     public static final class MECHANISM_XBOX_BUTTONS {
-        public static final int SHOOTER_BUTTON = XboxController.Button.kX.value;
+        public static final int SHOOTER_BUTTON = 1;
         public static final int INVERSED_SHOOTER_BUTTON = XboxController.Button.kStart.value;
-        public static final int CONVEYER_BUTTON = XboxController.Button.kA.value; 
+        public static final int CONVEYER_BUTTON = 2; 
         public static final int INVERSED_CONVEYER_BUTTON = XboxController.Button.kY.value;
     }
 
