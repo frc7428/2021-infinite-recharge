@@ -6,21 +6,23 @@ package frc.robot.commands.drive;
 
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.subsystems.MecanumDriveSubsystem;
+import frc.robot.subsystems.ConveyerSubsystem;
+import frc.robot.subsystems.ShooterSubsystem;
 
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
 // https://docs.wpilib.org/en/stable/docs/software/commandbased/convenience-features.html
 public class PathBBlue extends SequentialCommandGroup {
   /** Creates a new PathBBlue. */
-  public PathBBlue(MecanumDriveSubsystem drive) {
+  public PathBBlue(MecanumDriveSubsystem drive, ConveyerSubsystem convey, ShooterSubsystem shoot) {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
-    addCommands(new AutoDriveWithWaitCommand(drive, 0.75, 0, 0, 1), 
-    new AutoDriveWithWaitCommand(drive, 0, 0, 0.75, 0.197), 
+    addCommands(new AutoDriveWithWaitConveyerAndShooterCommand(drive, 0.75, 0, 0, 1, convey, true, true, shoot), 
+    new AutoDriveWithWaitCommand(drive, 0, 0, 0.75, 0.2), 
     new AutoDriveWithWaitCommand(drive, 0.75, 0, 0, 3), 
-    new AutoDriveWithWaitCommand(drive, 0, 0, -0.75, 0.53), 
+    new AutoDriveWithWaitCommand(drive, 0, 0, -0.75, 0.533), 
     new AutoDriveWithWaitCommand(drive, 0.75, 0, 0, 1.7), 
-    new AutoDriveWithWaitCommand(drive, 0, 0, 0.75, 0.6), 
+    new AutoDriveWithWaitCommand(drive, 0, 0, 0.75, 0.62), 
     new AutoDriveWithWaitCommand(drive, 0.75, 0, 0, 3));
   }
 }

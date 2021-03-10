@@ -20,7 +20,8 @@ public class AutoDriveCommand extends CommandBase {
   /**
    * Creates a new AutoDriveCommand.
    */
-  public AutoDriveCommand(MecanumDriveSubsystem drive, double forwardSpeed, double rightSpeed, double clockwiseSpeed) {
+  public AutoDriveCommand(MecanumDriveSubsystem drive, double forwardSpeed, 
+  double rightSpeed, double clockwiseSpeed) {
     mDrive = drive;
     mForwardSpeed = forwardSpeed;
     mRightSpeed = rightSpeed;

@@ -7,10 +7,11 @@
 
 package frc.robot.subsystems;
 
-import com.revrobotics.CANSparkMax;
+import com.ctre.phoenix.motorcontrol.can.TalonFX;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
-
 import edu.wpi.first.wpilibj.Servo;
+import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
@@ -24,8 +25,8 @@ public class ShooterSubsystem extends SubsystemBase {
    * Creates a new ShooterSubsystem.
    */
   public ShooterSubsystem() {
-    CANSparkMax pewLeft = new CANSparkMax(Constants.SPARK_MAX_CAN.PEW_LEFT_CAN_ID, MotorType.kBrushless);
-    CANSparkMax pewRight = new CANSparkMax(Constants.SPARK_MAX_CAN.PEW_RIGHT_CAN_ID, MotorType.kBrushless);
+    WPI_TalonFX pewLeft = new WPI_TalonFX(Constants.SPARK_MAX_CAN.PEW_LEFT_CAN_ID);
+    WPI_TalonFX pewRight = new WPI_TalonFX(Constants.SPARK_MAX_CAN.PEW_RIGHT_CAN_ID);
     pewLeft.setInverted(true);
 
     pew = new SpeedControllerGroup(pewLeft, pewRight);
@@ -39,9 +40,9 @@ public class ShooterSubsystem extends SubsystemBase {
     if (on) {
       // What to do when the conveyer is ON?
       if (up) {
-        pew.set(1);
+        pew.set(0.15);
           } else {
-            pew.set(-1);
+            pew.set(-0.15);
           }
     } else {
       // What to do when the conveyer is OFF?

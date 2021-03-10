@@ -16,6 +16,7 @@ public class AutoDriveWithWaitCommand extends ParallelRaceGroup {
   public AutoDriveWithWaitCommand(MecanumDriveSubsystem drive, double forwardSpeed, double rightSpeed, double clockwiseSpeed, double timeSeconds) {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
-    addCommands(new AutoDriveCommand(drive, forwardSpeed, rightSpeed, clockwiseSpeed), new WaitCommand(timeSeconds));
+    addCommands(new AutoDriveCommand(drive, forwardSpeed, rightSpeed, clockwiseSpeed), 
+    new WaitCommand(timeSeconds));
   }
 }
