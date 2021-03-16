@@ -16,7 +16,7 @@ public class PathABlue extends SequentialCommandGroup {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
     addCommands(new AutoDriveWithWaitConveyerAndShooterCommand(drive, 0.75, 0, 0, 0.85, convey, true, true, shoot), // First Forward
-    new AutoDriveWithWaitCommand(drive, 0, 0, 0.75, 0.28), //First Turn
+    new AutoDriveWithWaitCommand(drive, 0, 0, 0.75, 0.26), //First Turn
     new AutoDriveWithWaitCommand(drive, 0.75, 0, 0, 2.9),
     new AutoDriveWithWaitCommand(drive, 0.75, 0, 0, 0.5), //Second Forward 
     new AutoDriveWithWaitCommand(drive, 0, 0, -0.75, 0.73), //Second Turn
@@ -25,6 +25,6 @@ public class PathABlue extends SequentialCommandGroup {
     new AutoDriveWithWaitCommand(drive, 0, 0, 0.75, 0.65), // Fourth Turn 
     new AutoDriveWithWaitCommand(drive, 0.75, 0, 0, 1),
     new AutoDriveWithWaitCommand(drive, 0.75, 0, 0, 0.5),
-    new AutoDriveWithWaitCommand(drive, 0.75, 0, 0, 1.5)); //Fourth Forward
+    new AutoDriveWithWaitCommand(drive, 0.75, 0, 0, 1.5)); //Fourth Forward //Fourth Forward
   }
 }
