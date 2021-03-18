@@ -15,14 +15,26 @@ public class BarrelRacePath extends SequentialCommandGroup {
   public BarrelRacePath(MecanumDriveSubsystem drive) {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
-    addCommands(new AutoDriveWithWaitCommand(drive, 0.75, 0, 0, 1.2),
-    new AutoDriveWithWaitCommand(drive, 0.75, 0, 0.75, 1.8),
-    new AutoDriveWithWaitCommand(drive, 0.75, 0, 0, 1.4),
-    new AutoDriveWithWaitCommand(drive, 0.75, 0, -0.75, 1.8),
-    new AutoDriveWithWaitCommand(drive, 0.75, 0, -0.2, 1),
-    new AutoDriveWithWaitCommand(drive, 0.75, 0, 0, 1),
-    new AutoDriveWithWaitCommand(drive, 0.75, 0, -0.75, 1.6),
-    new AutoDriveWithWaitCommand(drive, 0, 0, -0.75, 1),
-    new AutoDriveWithWaitCommand(drive, 0.75, 0, 0, 4.2));
+    addCommands(new AutoDriveWithWaitCommand(drive, 0.75, 0, 0, 3.2),
+  new AutoDriveWithWaitCommand(drive, 0, 0, 0.75, 0.55),
+  new AutoDriveWithWaitCommand(drive, 0.75, 0, 0, 1.1),
+  new AutoDriveWithWaitCommand(drive, 0, 0, 0.75, 0.55),
+  new AutoDriveWithWaitCommand(drive, 0.75, 0, 0, 1.3),
+  new AutoDriveWithWaitCommand(drive, 0, 0, 0.75, 0.53),
+  new AutoDriveWithWaitCommand(drive, 0.75, 0, 0, 1),
+  new AutoDriveWithWaitCommand(drive, 0, 0, 0.75, 0.63),
+  new AutoDriveWithWaitCommand(drive, 0.75, 0, 0, 3.3),
+  new AutoDriveWithWaitCommand(drive, 0, 0, -0.75, 0.55),
+  new AutoDriveWithWaitCommand(drive, 0.75, 0, 0, 1.5),
+  new AutoDriveWithWaitCommand(drive, 0, 0, -0.75, 0.6),
+  new AutoDriveWithWaitCommand(drive, 0.75, 0, 0, 1.2),
+  new AutoDriveWithWaitCommand(drive, 0, 0, -0.75, 0.6),
+  new AutoDriveWithWaitCommand(drive, 0.75, 0, 0, 0.9),
+  new AutoDriveWithWaitCommand(drive, 0, 0, -0.75, 0.28),
+  new AutoDriveWithWaitCommand(drive, 0.75, 0, 0, 2.6),
+  new AutoDriveWithWaitCommand(drive, 0, 0, -0.75, 0.7),
+  new AutoDriveWithWaitCommand(drive, 0.75, 0, 0, 1.8),
+  new AutoDriveWithWaitCommand(drive, 0, 0, -0.75, 0.7),
+  new AutoDriveWithWaitCommand(drive, 0.75, 0, 0, 5));
   }
 }

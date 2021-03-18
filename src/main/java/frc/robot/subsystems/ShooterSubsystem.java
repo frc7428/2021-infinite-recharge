@@ -7,7 +7,6 @@
 
 package frc.robot.subsystems;
 
-import com.ctre.phoenix.motorcontrol.can.TalonFX;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import edu.wpi.first.wpilibj.Servo;
@@ -25,8 +24,8 @@ public class ShooterSubsystem extends SubsystemBase {
    * Creates a new ShooterSubsystem.
    */
   public ShooterSubsystem() {
-    WPI_TalonFX pewLeft = new WPI_TalonFX(Constants.SPARK_MAX_CAN.PEW_LEFT_CAN_ID);
-    WPI_TalonFX pewRight = new WPI_TalonFX(Constants.SPARK_MAX_CAN.PEW_RIGHT_CAN_ID);
+    WPI_TalonFX pewLeft = new WPI_TalonFX(Constants.FALCON.PEW_LEFT_CAN_ID);
+    WPI_TalonFX pewRight = new WPI_TalonFX(Constants.FALCON.PEW_RIGHT_CAN_ID);
     pewLeft.setInverted(true);
 
     pew = new SpeedControllerGroup(pewLeft, pewRight);

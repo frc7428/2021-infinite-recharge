@@ -15,15 +15,20 @@ public class BouncePath extends SequentialCommandGroup {
   public BouncePath(MecanumDriveSubsystem drive) {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
-    addCommands(new AutoDriveWithWaitCommand(drive, 0.75, 0, -0.8, 1.2),
-     new AutoDriveWithWaitCommand(drive, 0, 0, -0.75, 0.4),
-     new AutoDriveWithWaitCommand(drive, -0.75, 0, 0, 1.4), 
-     new AutoDriveWithWaitCommand(drive, -0.75, 0, -0.75, 2),
-     new AutoDriveWithWaitCommand(drive, -0.75, 0, 0, 1.4),
-     new AutoDriveWithWaitCommand(drive, 0, 0, 0.75, 0.4),
+    addCommands(new AutoDriveWithWaitCommand(drive, 0, 0, -0.75, 0.2),
      new AutoDriveWithWaitCommand(drive, 0.75, 0, 0, 2),
-     new AutoDriveWithWaitCommand(drive, 0.75, 0, -0.75, 1.4),
+     new AutoDriveWithWaitCommand(drive, 0, 0, -0.75, 0.3), 
+     new AutoDriveWithWaitCommand(drive, -0.75, 0, 0, 2),
+     new AutoDriveWithWaitCommand(drive, 0, 0, 0.75, 0.6),
+     new AutoDriveWithWaitCommand(drive, 0.75, 0, 0, 2.05),
+     new AutoDriveWithWaitCommand(drive, 0, 0, -0.75, 0.62),
+     new AutoDriveWithWaitCommand(drive, 0.75, 0, 0, 2.7),
+     new AutoDriveWithWaitCommand(drive, -0.75, 0, 0, 2.7),
+     new AutoDriveWithWaitCommand(drive, 0, 0, 0.75, 0.6),
      new AutoDriveWithWaitCommand(drive, 0.75, 0, 0, 2),
-     new AutoDriveWithWaitCommand(drive, -0.75, 0, -0.75, 1.2));
+     new AutoDriveWithWaitCommand(drive, 0, 0, -0.75, 0.6),
+     new AutoDriveWithWaitCommand(drive, 0.75, 0, 0, 2.6),
+     new AutoDriveWithWaitCommand(drive, 0, 0, -0.75, 0.3),
+     new AutoDriveWithWaitCommand(drive, -0.75, 0, 0, 2));
   }
 }

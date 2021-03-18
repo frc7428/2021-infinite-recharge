@@ -23,6 +23,9 @@ public final class Constants {
         public static final int FRONT_RIGHT_CAN_ID = 6;
         public static final int REAR_LEFT_CAN_ID = 3;
         public static final int REAR_RIGHT_CAN_ID = 4;
+        }
+
+    public static final class FALCON {
         public static final int INTAKE_CAN_ID = 7;
         public static final int PEW_LEFT_CAN_ID = 1; 
         public static final int PEW_RIGHT_CAN_ID = 2;
